@@ -1,5 +1,8 @@
 {
   "extends": ["airbnb-base", "prettier"],
   "plugins": ["fp"],
-  "rules": {}
+  "rules": {},
+  "env": {
+    "browser": true
+  }
 }
