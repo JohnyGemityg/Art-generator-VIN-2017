@@ -1,26 +1,30 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
   entry: {
-    polyfills: './src/polyfills.js',
-    index: './src/index.js',
+    polyfills: "./src/polyfills.js",
+    index: "./src/index.js",
   },
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   devServer: {
-    contentBase: './dist',
+    contentBase: "./dist",
   },
   module: {
     loaders: [
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         options: {
-          presets: ['env'],
+          presets: ["env", "react"],
+          plugins: [
+            "transform-object-rest-spread",
+            "transform-class-properties",
+          ],
         },
       },
     ],
