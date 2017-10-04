@@ -3,8 +3,7 @@
   "parser": "babel-eslint",
   "plugins": ["react"],
   "parserOptions": {
-    "sourceType": "module",
-    "ecmaFeatures": {}
+    "sourceType": "module"
   },
   "rules": {
     "react/jsx-uses-vars": [2]

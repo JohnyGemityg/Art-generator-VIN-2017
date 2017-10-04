@@ -3,15 +3,11 @@ const path = require("path");
 module.exports = {
   entry: {
     polyfills: "./src/polyfills.js",
-    index: "./src/index.js",
+    index: "./src/index.js"
   },
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist"),
-  },
-  devtool: "inline-source-map",
-  devServer: {
-    contentBase: "./dist",
+    path: path.resolve(__dirname, "dist")
   },
   module: {
     loaders: [
@@ -23,10 +19,10 @@ module.exports = {
           presets: ["env", "react"],
           plugins: [
             "transform-object-rest-spread",
-            "transform-class-properties",
-          ],
-        },
-      },
-    ],
-  },
+            "transform-class-properties"
+          ]
+        }
+      }
+    ]
+  }
 };
