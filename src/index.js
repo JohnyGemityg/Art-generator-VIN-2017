@@ -1,5 +1,15 @@
+import { AppContainer } from "react-hot-loader";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
-ReactDOM.render(<App />, document.getElementById("appRoot"));
+const rootEl = document.getElementById("appRoot");
+const render = Component =>
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    rootEl,
+  );
+
+render(App);

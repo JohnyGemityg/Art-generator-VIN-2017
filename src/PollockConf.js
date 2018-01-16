@@ -10,7 +10,7 @@ const PollockConf = ({ count, lineWidth, fill, onChange }) => (
         type="range"
         value={count}
         min="0"
-        max="250"
+        max="2500"
         step="1"
         onChange={event => {
           onChange("count", event.target.value);

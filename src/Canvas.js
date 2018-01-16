@@ -1,21 +1,17 @@
 import React from "react";
 
+let colorPallete;
+let backgroundColor;
+
 const setupCanvas = canvas => {
   const canvasCtx = canvas.getContext("2d");
   const width = document.body.clientWidth;
   const height = document.body.clientHeight;
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
-  canvasCtx.fillStyle = "#7B8D8E";
+  canvasCtx.fillStyle = backgroundColor;
   canvasCtx.fillRect(0, 0, width, height);
 };
-
-function* getSinusPairs(count, amplitude, freq, faze = 0, step = 1) {
-  for (let x = 0; x <= count; x += step) {
-    const y = Math.sin(2 * Math.PI * freq * x + faze) * amplitude;
-    yield { x, y };
-  }
-}
 
 const setupCanvasStrokeStyle = (canvasCtx, strokeConf) => {
   Object.keys(strokeConf).forEach(key => {
@@ -29,17 +25,10 @@ const handleFill = (canvasCtx, strokeConf) => {
   }
 };
 
-const getRandomColor = () => {
+const getRandomColor = () =>
   // const pallete = ["#7C786A", " #8DCDC1", "#D3E397", " #FFF5C3", " #EB6E44"];
-  const pallete = ["#588C7E", "#f2e394", "#f2ae72", "#d96459", "#8c4646"];
-  return pallete[Math.floor(Math.random() * pallete.length)];
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i += 1) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
+  // const colorPallete = ["#588C7E", "#f2e394", "#f2ae72", "#d96459", "#8c4646"];
+  colorPallete[Math.floor(Math.random() * colorPallete.length)];
 const drawSinus = (
   canvas,
   strokeConf,
@@ -92,6 +81,7 @@ const drawCurve = (canvasCtx, strokeConf, possitionCordsArray) => {
   setupCanvasStrokeStyle(canvasCtx, strokeConf);
   canvasCtx.beginPath();
   canvasCtx.moveTo(possitionCordsArray[0].x, possitionCordsArray[0].y);
+  canvasCtx.lineCap = "round";
   canvasCtx.bezierCurveTo(
     possitionCordsArray[1].x,
     possitionCordsArray[1].y,
@@ -194,6 +184,9 @@ class Canvas extends React.Component {
   }
 
   setup = () => {
+    colorPallete = this.props.colorPallete;
+    backgroundColor = this.props.backgroundColor;
+
     setupCanvas(this.canvasDom);
     if (this.props.activeArts.rows) {
       drawRows(this.canvasDom, this.props.rowsConf);

@@ -10,7 +10,7 @@ const CirclesConf = ({ count, radiusC, lineWidth, fill, onChange }) => (
         type="range"
         value={count}
         min="0"
-        max="300"
+        max="25000"
         step="1"
         onChange={event => {
           onChange("count", event.target.value);
@@ -24,7 +24,7 @@ const CirclesConf = ({ count, radiusC, lineWidth, fill, onChange }) => (
         type="range"
         value={radiusC}
         min="0"
-        max="25"
+        max="250"
         step="1"
         onChange={event => {
           onChange("radiusC", event.target.value);

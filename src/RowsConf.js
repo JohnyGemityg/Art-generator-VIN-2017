@@ -10,7 +10,7 @@ const RowsConf = ({ widthC, heightC, nice, lineWidth, fill, onChange }) => (
         type="range"
         value={widthC}
         min="0"
-        max="25"
+        max="250"
         step="1"
         onChange={event => {
           onChange("widthC", event.target.value);
@@ -24,7 +24,7 @@ const RowsConf = ({ widthC, heightC, nice, lineWidth, fill, onChange }) => (
         type="range"
         value={heightC}
         min="0"
-        max="25"
+        max="250"
         step="1"
         onChange={event => {
           onChange("heightC", event.target.value);
