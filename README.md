@@ -1,3 +1,6 @@
+# Demo
+https://johnygemityg.github.io/Art-generator-VIN-2017/
+
 # Generátor "umění" pro VIN FIT VUT 2017
 Právě si prohlížíte dokumentaci k webové aplikaci, která je schopna generovat "umění". Stejně tak, jako se můžeme bavit o improvizaci při výtvarné činnosti, můžeme improvizovat při programování. Aplikace, na kterou se díváte, není nic jiného než improvizace studenta Výtvarné informatiky (před jejím absolvováním).
 Jedná se o generátor obrazů, které jsou tvořeny geometrickými útvary, jenž jsou náhodně rozmístěny na plátno. Vlastnosti objektů je možné volit pomocí ovládacího panelu, který je umístěn nalevo od plátna.
