@@ -9,7 +9,7 @@ const StrokeAndFillConf = ({ lineWidth, fill, onChange }) => (
         type="range"
         value={lineWidth}
         min="0"
-        max="25"
+        max="100"
         step="0.5"
         onChange={event => {
           onChange("lineWidth", event.target.value);

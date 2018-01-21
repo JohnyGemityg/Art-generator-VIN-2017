@@ -9,7 +9,7 @@ const RowsConf = ({ widthC, heightC, nice, lineWidth, fill, onChange }) => (
       <input
         type="range"
         value={widthC}
-        min="0"
+        min="1"
         max="250"
         step="1"
         onChange={event => {
@@ -23,7 +23,7 @@ const RowsConf = ({ widthC, heightC, nice, lineWidth, fill, onChange }) => (
       <input
         type="range"
         value={heightC}
-        min="0"
+        min="1"
         max="250"
         step="1"
         onChange={event => {

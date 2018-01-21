@@ -102,14 +102,14 @@ const drawCircles = (canvas, circlesConf) => {
   for (let i = 0; i < circlesConf.count; i += 1) {
     const strokeConf = {
       strokeStyle: getRandomColor(),
-      lineWidth: Math.random() * circlesConf.lineWidth,
+      lineWidth: Math.random() * circlesConf.lineWidth * canvas.width / 1000,
       fillStyle: circlesConf.fill ? getRandomColor() : null,
     };
     const possitionCords = {
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
     };
-    const radius = Math.random() * canvas.height / circlesConf.radiusC;
+    const radius = Math.random() * circlesConf.radiusC * canvas.width / 1000;
     drawCircle(canvasCtx, strokeConf, possitionCords, radius);
   }
 };
@@ -119,14 +119,14 @@ const drawSquares = (canvas, squaresConf) => {
   for (let i = 0; i < squaresConf.count; i += 1) {
     const strokeConf = {
       strokeStyle: getRandomColor(),
-      lineWidth: Math.random() * squaresConf.lineWidth,
+      lineWidth: Math.random() * squaresConf.lineWidth * canvas.width / 1000,
       fillStyle: squaresConf.fill ? getRandomColor() : null,
     };
     const possitionCords = {
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
     };
-    const size = Math.random() * canvas.height / squaresConf.sizeC;
+    const size = Math.random() * squaresConf.sizeC * canvas.width / 1000;
     drawRect(canvasCtx, strokeConf, possitionCords, size, size);
   }
 };
@@ -136,7 +136,7 @@ const drawPollock = (canvas, pollockConf) => {
   for (let i = 0; i < pollockConf.count; i += 1) {
     const strokeConf = {
       strokeStyle: getRandomColor(),
-      lineWidth: Math.random() * pollockConf.lineWidth,
+      lineWidth: Math.random() * pollockConf.lineWidth * canvas.width / 1000,
       fillStyle: pollockConf.fill ? getRandomColor() : null,
     };
     const possitionCordsArray = new Array(4).fill(undefined).map(() => ({
@@ -156,10 +156,10 @@ const drawRows = (canvas, rowsConf) => {
     while (cPx < canvas.width) {
       const strokeConf = {
         strokeStyle: getRandomColor(),
-        lineWidth: Math.random() * rowsConf.lineWidth,
+        lineWidth: Math.random() * rowsConf.lineWidth * canvas.width / 1000,
         fillStyle: rowsConf.fill ? getRandomColor() : null,
       };
-      const width = Math.random() * canvas.width / rowsConf.widthC;
+      const width = Math.random() * rowsConf.widthC * canvas.width / 1000;
       drawRect(
         canvasCtx,
         strokeConf,
