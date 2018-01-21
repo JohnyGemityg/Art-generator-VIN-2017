@@ -3,19 +3,22 @@ import React from "react";
 let colorPallete;
 let backgroundColor;
 
-const setupCanvas = canvas => {
+const setupCanvas = (canvas, resolution) => {
   const canvasCtx = canvas.getContext("2d");
-  const width = document.body.clientWidth;
-  const height = document.body.clientHeight;
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
+  canvas.width = resolution.width; // canvas.offsetWidth;
+  canvas.height = resolution.height; // canvas.offsetHeight;
   canvasCtx.fillStyle = backgroundColor;
-  canvasCtx.fillRect(0, 0, width, height);
+  canvasCtx.fillRect(0, 0, resolution.width, resolution.height);
 };
 
 const setupCanvasStrokeStyle = (canvasCtx, strokeConf) => {
-  Object.keys(strokeConf).forEach(key => {
-    canvasCtx[key] = strokeConf[key];
+  const strokeConfClean = {
+    ...strokeConf,
+    fillStyle:
+      strokeConf.lineWidth < 1 ? strokeConf.strokeStyle : strokeConf.fillStyle,
+  };
+  Object.keys(strokeConfClean).forEach(key => {
+    canvasCtx[key] = strokeConfClean[key];
   });
 };
 
@@ -187,7 +190,7 @@ class Canvas extends React.Component {
     colorPallete = this.props.colorPallete;
     backgroundColor = this.props.backgroundColor;
 
-    setupCanvas(this.canvasDom);
+    setupCanvas(this.canvasDom, this.props.resolution);
     if (this.props.activeArts.rows) {
       drawRows(this.canvasDom, this.props.rowsConf);
     }

@@ -7,6 +7,7 @@ import SquaresConf from "./SquaresConf";
 import RowsConf from "./RowsConf";
 import ColorPallete from "./ColorPallete";
 import BackgroundPicker from "./BackgroundPicker";
+import ResolutionConf from "./ResolutionConf";
 
 const defaultOptions = {
   activeArts: {
@@ -42,6 +43,10 @@ const defaultOptions = {
   colorPallete: ["#588C7E", "#f2e394", "#f2ae72", "#d96459", "#8c4646"],
   activePickerId: null,
   backgroundColor: "#eee",
+  resolution: {
+    width: 3000,
+    height: 3000,
+  },
 };
 
 class App extends React.Component {
@@ -53,6 +58,7 @@ class App extends React.Component {
     this.handlePickerDelete = this.handlePickerDelete.bind(this);
     this.handlePickComplete = this.handlePickComplete.bind(this);
     this.handleCloseColorPicker = this.handleCloseColorPicker.bind(this);
+    this.handleResolutionChange = this.handleResolutionChange.bind(this);
   }
 
   handleChangeConfVal = (conf, key, value) => {
@@ -111,10 +117,24 @@ class App extends React.Component {
     this.setState({ backgroundColor: color.hex });
   };
 
+  handleResolutionChange = ({ width, height }) => {
+    if (width) {
+      this.setState({ resolution: { ...this.state.resolution, width } });
+    }
+    if (height) {
+      this.setState({ resolution: { ...this.state.resolution, height } });
+    }
+  };
+
   render() {
     return (
       <div style={{ display: "flex" }}>
         <div style={{ width: "25%", padding: "0 5px" }}>
+          <ResolutionConf
+            width={this.state.resolution.width}
+            height={this.state.resolution.height}
+            onResolutionChange={this.handleResolutionChange}
+          />
           <BackgroundPicker
             color={this.state.backgroundColor}
             onColorChange={this.handleBackgroundColorChange}
@@ -163,16 +183,24 @@ class App extends React.Component {
               {...this.state.rowsConf}
             />
           )}
+          <p>
+            <strong>
+              Obrázek je možné uložit kliknutím pravým tlačítkem do plátna.
+            </strong>
+          </p>
         </div>
-        <Canvas
-          colorPallete={this.state.colorPallete}
-          pollockConf={this.state.pollockConf}
-          circlesConf={this.state.circlesConf}
-          squaresConf={this.state.squaresConf}
-          rowsConf={this.state.rowsConf}
-          activeArts={this.state.activeArts}
-          backgroundColor={this.state.backgroundColor}
-        />
+        <div style={{ width: "75%" }}>
+          <Canvas
+            resolution={this.state.resolution}
+            colorPallete={this.state.colorPallete}
+            pollockConf={this.state.pollockConf}
+            circlesConf={this.state.circlesConf}
+            squaresConf={this.state.squaresConf}
+            rowsConf={this.state.rowsConf}
+            activeArts={this.state.activeArts}
+            backgroundColor={this.state.backgroundColor}
+          />
+        </div>
       </div>
     );
   }
