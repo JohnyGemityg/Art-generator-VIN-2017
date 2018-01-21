@@ -23,15 +23,15 @@ const defaultOptions = {
   },
   circlesConf: {
     count: 5000,
-    radiusC: 25,
-    lineWidth: 5,
-    fill: true,
+    radiusC: 100,
+    lineWidth: 1,
+    fill: false,
   },
   squaresConf: {
     count: 5000,
-    sizeC: 25,
-    lineWidth: 5,
-    fill: true,
+    sizeC: 50,
+    lineWidth: 1,
+    fill: false,
   },
   rowsConf: {
     widthC: 5,
